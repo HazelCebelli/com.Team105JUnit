@@ -2,6 +2,7 @@ package day06;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -12,11 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C01_BeforeClassAfterClass {
-    // 3 ayri test method'u olusturun
-    // 1.method'da amazon'a gidip, amazona gittigimizi test edin
-    // 2.method'da amazon'da nutella aratip, sonuclarin nutella icerdigini test edin
-    // 3.method'da nutella arama sonuc sayisinin 50'den fazla oldugunu test edin
+public class C03_AssertionMetghodlari {
+
     static WebDriver driver;
     @BeforeClass
     // @BeforeClass ve @AfterClass notasyonu kullanan method'lar
@@ -39,11 +37,13 @@ public class C01_BeforeClassAfterClass {
         driver.get("https://www.amazon.com");
         String expectedKelime="Amazon";
         String actualTitle=driver.getTitle();
-        if (actualTitle.contains(expectedKelime)){
-            System.out.println("Amazon gidis testi PASSED");
-        }else{
-            System.out.println("Amazon gidis testi FAILED");
-        }
+
+        Assert.assertTrue(actualTitle.contains(expectedKelime));
+//        if (actualTitle.contains(expectedKelime)){
+//            System.out.println("Amazon gidis testi PASSED");
+//        }else{
+//            System.out.println("Amazon gidis testi FAILED");
+//        }
     }
 
 
@@ -55,11 +55,14 @@ public class C01_BeforeClassAfterClass {
         String expectedKelime="Nutella";
         WebElement sonucYaziElementi= driver.findElement(By.xpath("//h1[@class='a-size-base s-desktop-toolbar a-text-normal']"));
         String sonucYazisiStr=sonucYaziElementi.getText();
-        if (sonucYazisiStr.contains(expectedKelime)){
-            System.out.println("Nutella arama testi PASSED");
-        }else {
-            System.out.println("Nutella arama testi FAILED");
-        }
+
+        Assert.assertTrue(sonucYazisiStr.contains(expectedKelime));
+
+//        if (sonucYazisiStr.contains(expectedKelime)){
+//            System.out.println("Nutella arama testi PASSED");
+//        }else {
+//            System.out.println("Nutella arama testi FAILED");
+//        }
     }
 
 
@@ -70,14 +73,16 @@ public class C01_BeforeClassAfterClass {
         String sonucYazisiStr=sonucYaziElementi.getText();
         String[] sonucYazisiArr= sonucYazisiStr.split(" ");
         String sonucAdediStr=sonucYazisiArr[2]; // "74"
+
         int actualSonucAdediInt= Integer.parseInt(sonucAdediStr);
-
         int expectedAramaSonucusayisi= 50;
-        if (actualSonucAdediInt>expectedAramaSonucusayisi){
-            System.out.println("Nutella arama sonuc sayisi testi PASSED");
-        }else {
-            System.out.println("Nutella arama sonuc sayisi testi FAILED");
-        }
-    }
 
+        Assert.assertTrue(actualSonucAdediInt>expectedAramaSonucusayisi);
+
+//        if (actualSonucAdediInt>expectedAramaSonucusayisi){
+//            System.out.println("Nutella arama sonuc sayisi testi PASSED");
+//        }else {
+//            System.out.println("Nutella arama sonuc sayisi testi FAILED");
+//        }
+    }
 }
