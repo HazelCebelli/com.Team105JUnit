@@ -14,7 +14,7 @@ public class ReusableMethods {
         }
 
 
-public static void tumSayfaScreenShotCek(WebDriver driver){
+/*public static void tumSayfaScreenShotCek(WebDriver driver){
 
         // 1- TakeScreenshot objesi olustur
         TakesScreenshot tss= (TakesScreenshot) driver;
@@ -24,7 +24,7 @@ public static void tumSayfaScreenShotCek(WebDriver driver){
 // 3- tss objesi kullanarak ekran goruntusu alip, gecici dosyaya kaydet
         File geciciDopsya= tss.getScreenshotAs(OutputType.FILE);
 // 4- gecici dosyayi ana dosyaya kopyala
-        FileUtils.copyFile(geciciDopsya,tumSayfaScreenshot);
+        FileUtils.copyFile(geciciDopsya,tumSayfaScreenshot);*/
 
 
 
